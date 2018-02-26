@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -104,6 +104,7 @@
                         <outlet property="broadcastButton" destination="tL4-2S-1Xx" id="LTc-Ll-GBH"/>
                         <outlet property="colorSelector" destination="hIQ-gJ-1O9" id="RW6-UB-1cP"/>
                         <outlet property="colorView" destination="FRj-uP-fsm" id="vxJ-eg-lp3"/>
+                        <outlet property="micLabel" destination="T7y-DL-IMw" id="h9f-cQ-eth"/>
                         <outlet property="micSwitch" destination="Xbd-Ej-U93" id="F8o-O8-gN9"/>
                         <outlet property="statusLabel" destination="G6P-o7-xf2" id="OJR-G4-hQD"/>
                     </connections>
