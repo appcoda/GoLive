@@ -19,7 +19,7 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
     @IBOutlet var micSwitch: UISwitch!
     @IBOutlet var micLabel: UILabel!
     
-    let controller = RPBroadcastController()
+    var controller: RPBroadcastController?
     let recorder = RPScreenRecorder.shared()
     
     override func viewDidLoad() {
@@ -29,10 +29,9 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
     
     @IBAction func didPressBroadcastButton() {
         // Called when broadcast button is tapped. Runs functions to start or stop broadcast.
-        if controller.isBroadcasting {
+        if let isBroadcasting = controller?.isBroadcasting, isBroadcasting {
             stopBroadcast()
-        }
-        else {
+        } else {
             startBroadcast()
         }
     }
@@ -64,6 +63,9 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
             print("Broadcast Activity Controller is not available.")
             return
         }
+        if let bcController = broadcastController {
+            self.controller = bcController
+        }
         
         //2
         broadcastActivityViewController.dismiss(animated: true) {
@@ -82,7 +84,7 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
     
     func stopBroadcast() {
         
-        controller.finishBroadcast { error in
+        controller?.finishBroadcast { error in
             if error == nil {
                 print("Broadcast ended")
                 self.broadcastEnded()
@@ -92,21 +94,25 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
     
     
     func broadcastStarted() {
-        // Called to update the UI when a broadcast starts.
-        broadcastButton.setTitle("Stop Broadcast", for: .normal)
-        statusLabel.text = "You are live!" // Any app that does not notify the user that they are live will be rejected in app review.
-        statusLabel.textColor = UIColor.red
-        micSwitch.isHidden = false
-        micLabel.isHidden = false
+        DispatchQueue.main.sync {
+            // Called to update the UI when a broadcast starts.
+            broadcastButton.setTitle("Stop Broadcast", for: .normal)
+            statusLabel.text = "You are live!" // Any app that does not notify the user that they are live will be rejected in app review.
+            statusLabel.textColor = UIColor.red
+            micSwitch.isHidden = false
+            micLabel.isHidden = false
+        }
     }
     
     func broadcastEnded() {
-        // Called to update the UI when a broadcast ends.
-        broadcastButton.setTitle("Start Broadcast", for: .normal)
-        statusLabel.text = "You are not live"
-        statusLabel.textColor = UIColor.black
-        micSwitch.isHidden = true
-        micLabel.isHidden = true
+        DispatchQueue.main.sync {
+            // Called to update the UI when a broadcast ends.
+            broadcastButton.setTitle("Start Broadcast", for: .normal)
+            statusLabel.text = "You are not live"
+            statusLabel.textColor = UIColor.black
+            micSwitch.isHidden = true
+            micLabel.isHidden = true
+        }
     }
     
     
@@ -153,4 +159,3 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
 
 
 }
-
