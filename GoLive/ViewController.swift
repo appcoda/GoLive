@@ -74,7 +74,10 @@ class ViewController: UIViewController, RPBroadcastActivityViewControllerDelegat
                 //5
                 if error == nil {
                     print("Broadcast started successfully!")
-                    self.broadcastStarted()
+                    // UI must always be changed in main thread. 
+                    DispatchQueue.main.async {
+                        self.broadcastStarted()
+                    }
                 }
             }
         }
