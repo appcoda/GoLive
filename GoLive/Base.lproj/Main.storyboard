@@ -104,6 +104,7 @@
                         <outlet property="broadcastButton" destination="tL4-2S-1Xx" id="LTc-Ll-GBH"/>
                         <outlet property="colorSelector" destination="hIQ-gJ-1O9" id="RW6-UB-1cP"/>
                         <outlet property="colorView" destination="FRj-uP-fsm" id="vxJ-eg-lp3"/>
+                        <outlet property="micLabel" destination="T7y-DL-IMw" id="ReC-fz-4TO"/>
                         <outlet property="micSwitch" destination="Xbd-Ej-U93" id="F8o-O8-gN9"/>
                         <outlet property="statusLabel" destination="G6P-o7-xf2" id="OJR-G4-hQD"/>
                     </connections>
